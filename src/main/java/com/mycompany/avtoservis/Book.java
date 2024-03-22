@@ -16,27 +16,27 @@ import java.util.Scanner;
 
 public class Book {
      public static void main(String[] args) {
-        System.out.println("РЎРєРІРѕСЂС†РѕРІР° РљСЃРµРЅРёСЏ Р Р�Р‘Рћ-04-22 5 РІР°СЂРёР°РЅС‚");
+        System.out.println("Скворцова Ксения РИБО-04-22 вариант 5");
         Scanner scan = new Scanner(System.in);
         int numberOfCars = scan.nextInt();
         scan.nextLine();
 }
     public static ArrayList <Dictionary> dictionary = new ArrayList<>() {{
-        add(new Dictionary("Abdication","РћС‚РєР°Р·"));
-        add(new Dictionary("Aperitif", "РђРїРµСЂРёС‚РёРІ"));
-        add(new Dictionary("Mead", "РњРµРґ"));
-        add(new Dictionary("Zizz", "Р–СѓР¶Р¶Р°РЅРёРµ"));
-        add(new Dictionary("РђР»РµРЅРµРЅРѕРє", "Fawn"));
+        add(new Dictionary("Abdication","Отречение"));
+        add(new Dictionary("Aperitif", "Аперитив"));
+        add(new Dictionary("Mead", "Мед"));
+        add(new Dictionary("Zizz", "Жужжание"));
+        add(new Dictionary("Олененок", "Fawn"));
     }};
     private static Scanner scan = new Scanner(System.in);
 
     public static void start() {
-        System.out.println("Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ");
-        System.out.println("1: РґРѕР±Р°РІРёС‚СЊ РЅРѕРІРѕРµ СЃР»РѕРІРѕ РІ СЃР»РѕРІР°СЂСЊ \n" +
-                "2: СѓРґР°Р»РёС‚СЊ СЃР»РѕРІРѕ РёР· СЃР»РѕРІР°СЂСЏ \n" +
-                "3: СѓРґР°Р»РёС‚СЊ РІСЃРµ СЃР»РѕРІР° РёР· СЃР»РѕРІР°СЂСЏ \n" +
-                "4: РІС‹РІРµСЃС‚Рё РІРµСЃСЊ СЃР»РѕРІР°СЂСЊ \n" +
-                "5: РІС‹С…РѕРґ \n");
+        System.out.println("Выберите действие: ");
+        System.out.println("1: добавить новое слово в список \n" +
+                "2: удалить слово из списка \n" +
+                "3: удалить все слова из списка \n" +
+                "4: вывести весь список \n" +
+                "5: выход \n");
         int choose = scan.nextInt();
         scan.nextLine();
         switch (choose) {
@@ -68,9 +68,9 @@ public class Book {
 
 
     public static void addWord() {
-        System.out.println("Р’РІРµРґРёС‚Рµ СЃР»РѕРІРѕ");
+        System.out.println("Введите слово");
         String word = scan.nextLine();
-        System.out.println("Р’РІРµРґРёС‚Рµ РїРµСЂРµРІРѕРґ СЃР»РѕРІР°");
+        System.out.println("Введите перевод");
         String meaning = scan.nextLine();
         }
 
@@ -79,13 +79,13 @@ public class Book {
     }
 
       private static void delByWord() {
-        System.out.println("Р’РІРµРґРёС‚Рµ СЃР»РѕРІРѕ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РёР· СЃР»РѕРІР°СЂСЏ: ");
+        System.out.println("Введите слово: ");
         String word = scan.nextLine();
         if (dictionary.containsKey(word)) {
             dictionary.remove(word);
             printSortedDictionary();
         } else {
-            System.out.println("РЎР»РѕРІРѕ РЅРµ РЅР°Р№РґРµРЅРѕ РІ СЃР»РѕРІР°СЂРµ");
+            System.out.println("Слова больше нет в списке");
         }
     }
         start();
