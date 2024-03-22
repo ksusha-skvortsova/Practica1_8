@@ -9,30 +9,43 @@ package com.mycompany.avtoservis;
  *
  * @author Ксюша
  */
+package com.mycompany.avtoservis;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
 public class Book {
-    public static ArrayList<Dictionary> cars = new ArrayList<>() {{
-        add(new Cars("Volvo s90", 2015, "x001xx"));
-        add(new Cars("Lada Vesta", 2020, "x002xx"));
-        add(new Cars("Kia Rio", 2012, "x003xx"));
+     public static void main(String[] args) {
+        System.out.println("РЎРєРІРѕСЂС†РѕРІР° РљСЃРµРЅРёСЏ Р Р�Р‘Рћ-04-22 5 РІР°СЂРёР°РЅС‚");
+        Scanner scan = new Scanner(System.in);
+        int numberOfCars = scan.nextInt();
+        scan.nextLine();
+}
+    public static ArrayList <Dictionary> dictionary = new ArrayList<>() {{
+        add(new Dictionary("Abdication","РћС‚РєР°Р·"));
+        add(new Dictionary("Aperitif", "РђРїРµСЂРёС‚РёРІ"));
+        add(new Dictionary("Mead", "РњРµРґ"));
+        add(new Dictionary("Zizz", "Р–СѓР¶Р¶Р°РЅРёРµ"));
+        add(new Dictionary("РђР»РµРЅРµРЅРѕРє", "Fawn"));
     }};
     private static Scanner scan = new Scanner(System.in);
 
     public static void start() {
-        System.out.println("Выберите действие: ");
-        System.out.println("1: добавить новый автомобиль в список \n" +
-                "2: удалить автомобиль из списка по его регистрационному номеру \n" +
-                "3: удалить все автомобили из списка \n" +
-                "4: вывести весь список \n" +
-                "5: выход \n");
+        System.out.println("Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ");
+        System.out.println("1: РґРѕР±Р°РІРёС‚СЊ РЅРѕРІРѕРµ СЃР»РѕРІРѕ РІ СЃР»РѕРІР°СЂСЊ \n" +
+                "2: СѓРґР°Р»РёС‚СЊ СЃР»РѕРІРѕ РёР· СЃР»РѕРІР°СЂСЏ \n" +
+                "3: СѓРґР°Р»РёС‚СЊ РІСЃРµ СЃР»РѕРІР° РёР· СЃР»РѕРІР°СЂСЏ \n" +
+                "4: РІС‹РІРµСЃС‚Рё РІРµСЃСЊ СЃР»РѕРІР°СЂСЊ \n" +
+                "5: РІС‹С…РѕРґ \n");
         int choose = scan.nextInt();
         scan.nextLine();
         switch (choose) {
             case 1: {
-                addCar();
+                addWord();
                 break;
             }
             case 2: {
-                delBySerial();
+                delByWord();
                 break;
             }
             case 3: {
@@ -49,44 +62,37 @@ public class Book {
     }
 
     private static void outAllArr() {
-        cars.forEach(System.out::println);
+        dictionary.forEach(System.out::println);
         start();
     }
 
-    private static boolean ifThereThisCar(String serial) {
-        return cars.stream().anyMatch(x -> x.getSerial().equals(serial));
-    }
 
-    public static void addCar() {
-        System.out.println("Введите марку машины");
-        String mark = scan.nextLine();
-        System.out.println("Введите год выпуска машины");
-        int age = scan.nextInt();
-        System.out.println("Введите регистрационный номер машины");
-        scan.nextLine();
-        String serial = scan.nextLine();
-        while (ifThereThisCar(serial)) {
-            System.out.println("Такой регистрационный номер машины уже имеется, введите другой");
-            serial = scan.nextLine();
+    public static void addWord() {
+        System.out.println("Р’РІРµРґРёС‚Рµ СЃР»РѕРІРѕ");
+        String word = scan.nextLine();
+        System.out.println("Р’РІРµРґРёС‚Рµ РїРµСЂРµРІРѕРґ СЃР»РѕРІР°");
+        String meaning = scan.nextLine();
         }
 
-        cars.add(new Cars(mark, age, serial));
+        dictionary.add(new Dictionary(word, meaning));
         start();
     }
 
-    private static void delBySerial() {
-        System.out.println("Введите регистрационный номер машины");
-        String serialNum = scan.nextLine();
-        Iterator<Cars> iter = cars.iterator();
-        while (iter.hasNext()) {
-            Cars c = iter.next();
-            if (c.getSerial().equals(serialNum)) iter.remove();
+      private static void delByWord() {
+        System.out.println("Р’РІРµРґРёС‚Рµ СЃР»РѕРІРѕ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РёР· СЃР»РѕРІР°СЂСЏ: ");
+        String word = scan.nextLine();
+        if (dictionary.containsKey(word)) {
+            dictionary.remove(word);
+            printSortedDictionary();
+        } else {
+            System.out.println("РЎР»РѕРІРѕ РЅРµ РЅР°Р№РґРµРЅРѕ РІ СЃР»РѕРІР°СЂРµ");
         }
+    }
         start();
     }
 
     private static void delAll() {
-        cars.clear();
+        dictionary.clear();
         start();
     }
 
